@@ -8,10 +8,10 @@
 @layer base {
   :root {
     /* Core Colors - Warm & Vibrant */
-    --background: 48 100% 96%; /* #FFF9E6 warm cream */
+    --background: 40 80% 94%; /* #FBF4DE rich cream */
     --foreground: 30 8% 16%; /* #2E2B26 charcoal */
 
-    --card: 0 0% 100%; /* #FFFFFF */
+    --card: 40 60% 98%; /* #FFFCF7 off-white cream */
     --card-foreground: 30 8% 16%;
 
     --popover: 0 0% 100%;
@@ -155,7 +155,7 @@
 
   /* Glass effect */
   .glass {
-    @apply bg-white/80 backdrop-blur-md;
+    @apply bg-white/60 backdrop-blur-md border border-white/20;
   }
 
   /* Custom shadow utilities */
@@ -193,6 +193,18 @@
       -2px -2px 0 hsl(var(--foreground)),
       2px -2px 0 hsl(var(--foreground)),
       -2px 2px 0 hsl(var(--foreground));
+  }
+
+  .text-outline-white {
+    text-shadow: 
+      4px 4px 0 #fff,
+      -4px -4px 0 #fff,
+      4px -4px 0 #fff,
+      -4px 4px 0 #fff,
+      4px 0 0 #fff,
+      -4px 0 0 #fff,
+      0 4px 0 #fff,
+      0 -4px 0 #fff;
   }
 
   /* Animation utilities */

@@ -59,85 +59,88 @@ export function ProductModal({ item, isOpen, onClose }: ProductModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg p-0 overflow-hidden bg-card">
-        {/* Image */}
-        <div className="relative aspect-video">
-          <img
-            src={item.imageUrl}
-            alt={item.name}
-            className="w-full h-full object-cover"
-          />
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 bg-foreground/80 text-card rounded-full hover:bg-foreground transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-
-        <div className="p-6">
-          <DialogHeader className="mb-4">
-            <DialogTitle className="text-2xl font-display">{item.name}</DialogTitle>
-            <p className="text-muted-foreground">{item.description}</p>
-          </DialogHeader>
-
-          {/* Spice Level */}
-          <div className="mb-6">
-            <h4 className="font-semibold mb-3">Spice Level</h4>
-            <div className="flex flex-wrap gap-2">
-              {spiceLevels.map((level) => (
-                <button
-                  key={level.value}
-                  onClick={() => setSpiceLevel(level.value)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1 ${
-                    spiceLevel === level.value
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-secondary-foreground hover:bg-accent"
-                  }`}
-                >
-                  {level.icon && <Flame className="w-3 h-3" />}
-                  {level.label}
-                </button>
-              ))}
-            </div>
+      <DialogContent className="sm:max-w-lg w-[95%] max-h-[90vh] p-0 overflow-hidden bg-card flex flex-col data-[state=open]:duration-300 gap-0">
+        <div className="flex-1 overflow-y-auto">
+          {/* Image */}
+          <div className="relative aspect-video shrink-0">
+            <img
+              src={item.imageUrl}
+              alt={item.name}
+              className="w-full h-full object-cover"
+            />
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 p-2 bg-foreground/80 text-card rounded-full hover:bg-foreground transition-colors z-10"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
 
-          {/* Add-ons */}
-          {item.addOns.length > 0 && (
+          <div className="p-6 pb-24">
+            <DialogHeader className="mb-4">
+              <DialogTitle className="text-2xl font-display">{item.name}</DialogTitle>
+              <p className="text-muted-foreground">{item.description}</p>
+            </DialogHeader>
+
+            {/* Spice Level */}
             <div className="mb-6">
-              <h4 className="font-semibold mb-3">Add-ons</h4>
-              <div className="space-y-3">
-                {item.addOns.map((addOn) => (
-                  <label
-                    key={addOn.id}
-                    className="flex items-center justify-between p-3 bg-secondary rounded-lg cursor-pointer hover:bg-accent transition-colors"
+              <h4 className="font-semibold mb-3">Spice Level</h4>
+              <div className="flex flex-wrap gap-2">
+                {spiceLevels.map((level) => (
+                  <button
+                    key={level.value}
+                    onClick={() => setSpiceLevel(level.value)}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1 ${spiceLevel === level.value
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-secondary-foreground hover:bg-accent"
+                      }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <Checkbox
-                        checked={selectedAddOns.some((a) => a.id === addOn.id)}
-                        onCheckedChange={() => handleAddOnToggle(addOn)}
-                      />
-                      <span className="text-sm">{addOn.name}</span>
-                    </div>
-                    <span className="text-sm font-medium">+₹{addOn.price}</span>
-                  </label>
+                    {level.icon && <Flame className="w-3 h-3" />}
+                    {level.label}
+                  </button>
                 ))}
               </div>
             </div>
-          )}
 
-          {/* Special Instructions */}
-          <div className="mb-6">
-            <h4 className="font-semibold mb-3">Special Instructions</h4>
-            <textarea
-              value={specialInstructions}
-              onChange={(e) => setSpecialInstructions(e.target.value)}
-              placeholder="Any special requests? (optional)"
-              className="w-full p-3 bg-secondary rounded-lg text-sm resize-none h-20 focus:outline-none focus:ring-2 focus:ring-primary"
-            />
+            {/* Add-ons */}
+            {item.addOns.length > 0 && (
+              <div className="mb-6">
+                <h4 className="font-semibold mb-3">Add-ons</h4>
+                <div className="space-y-3">
+                  {item.addOns.map((addOn) => (
+                    <label
+                      key={addOn.id}
+                      className="flex items-center justify-between p-3 bg-secondary rounded-lg cursor-pointer hover:bg-accent transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <Checkbox
+                          checked={selectedAddOns.some((a) => a.id === addOn.id)}
+                          onCheckedChange={() => handleAddOnToggle(addOn)}
+                        />
+                        <span className="text-sm">{addOn.name}</span>
+                      </div>
+                      <span className="text-sm font-medium">+₹{addOn.price}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Special Instructions */}
+            <div className="mb-6">
+              <h4 className="font-semibold mb-3">Special Instructions</h4>
+              <textarea
+                value={specialInstructions}
+                onChange={(e) => setSpecialInstructions(e.target.value)}
+                placeholder="Any special requests? (optional)"
+                className="w-full p-3 bg-secondary rounded-lg text-sm resize-none h-20 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
           </div>
+        </div>
 
-          {/* Quantity and Add to Cart */}
+        {/* Sticky Footer */}
+        <div className="p-4 bg-card border-t border-border shrink-0 z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3 bg-secondary rounded-lg p-1">
               <Button

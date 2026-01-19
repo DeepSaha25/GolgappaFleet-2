@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 
 const steps = [
   {
-    icon: "🎯",
+    stepLabel: "READY",
     title: "SELECT YOUR ATTACK",
     description:
       "Choose your weapon of choice: Classic Pani, Vodka Shots, or Chocolate Bombs. Load up the cart.",
@@ -13,7 +13,7 @@ const steps = [
     rotate: "-rotate-2",
   },
   {
-    icon: "🚀",
+    stepLabel: "SET",
     title: "WE FLEET IT",
     description:
       "Our hyper-speed sanitation squad preps your box and races to your location. 10 mins or less.",
@@ -22,7 +22,7 @@ const steps = [
     rotate: "rotate-1",
   },
   {
-    icon: "🤤",
+    stepLabel: "GULP!",
     title: "CRUNCH TIME",
     description:
       "Receive the box. Assemble the Puri. Pour the Pani. Experience spiritual enlightenment.",
@@ -92,9 +92,9 @@ export function HowToSection() {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + index * 0.15, type: "spring" }}
-                  className="absolute -top-6 left-1/2 -translate-x-1/2 z-10 w-14 h-14 bg-foreground rounded-xl flex items-center justify-center text-2xl shadow-bold transform -rotate-6"
+                  className="absolute -top-6 left-1/2 -translate-x-1/2 z-10 w-20 h-14 bg-foreground rounded-xl flex items-center justify-center text-xl font-bold font-display shadow-bold transform -rotate-6 text-card border-2 border-white/10"
                 >
-                  {step.icon}
+                  {step.stepLabel}
                 </motion.div>
 
                 {/* Card */}

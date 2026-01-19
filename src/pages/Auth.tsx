@@ -55,21 +55,19 @@ export default function AuthPage() {
             <div className="flex bg-secondary rounded-lg p-1 mb-6">
               <button
                 onClick={() => setMode("login")}
-                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-                  mode === "login"
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${mode === "login"
                     ? "bg-card shadow-soft text-foreground"
                     : "text-muted-foreground"
-                }`}
+                  }`}
               >
                 Login
               </button>
               <button
                 onClick={() => setMode("register")}
-                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-                  mode === "register"
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${mode === "register"
                     ? "bg-card shadow-soft text-foreground"
                     : "text-muted-foreground"
-                }`}
+                  }`}
               >
                 Sign Up
               </button>
@@ -160,7 +158,7 @@ export default function AuthPage() {
             {/* Demo Notice */}
             <div className="mt-6 p-4 bg-primary/10 rounded-lg">
               <p className="text-xs text-center text-primary">
-                🔒 This is a demo. Backend authentication requires enabling Lovable Cloud.
+                🔒 This is a demo. Backend authentication is coming soon.
               </p>
             </div>
 

@@ -89,9 +89,8 @@ export default function AdminDashboard() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 bottom-0 w-64 bg-card border-r border-border z-40 transform transition-transform lg:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 bottom-0 w-64 bg-card border-r border-border z-40 transform transition-transform lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="p-4 border-b border-border hidden lg:flex items-center gap-2">
           <span className="text-2xl">🥟</span>
@@ -112,11 +111,10 @@ export default function AdminDashboard() {
                 setActiveTab(item.id);
                 setSidebarOpen(false);
               }}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                activeTab === item.id
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${activeTab === item.id
                   ? "bg-primary text-primary-foreground"
                   : "text-muted-foreground hover:bg-secondary"
-              }`}
+                }`}
             >
               <item.icon className="w-5 h-5" />
               {item.label}
@@ -303,11 +301,10 @@ export default function AdminDashboard() {
                           </td>
                           <td className="p-4">
                             <span
-                              className={`px-2 py-1 text-xs font-medium rounded-full ${
-                                item.isActive
+                              className={`px-2 py-1 text-xs font-medium rounded-full ${item.isActive
                                   ? "bg-success/10 text-success"
                                   : "bg-destructive/10 text-destructive"
-                              }`}
+                                }`}
                             >
                               {item.isActive ? "Active" : "Inactive"}
                             </span>
@@ -413,7 +410,7 @@ export default function AdminDashboard() {
                 Customer Management
               </h2>
               <p className="text-muted-foreground">
-                Enable Lovable Cloud to access customer data
+                Customer data management coming soon
               </p>
             </motion.div>
           )}

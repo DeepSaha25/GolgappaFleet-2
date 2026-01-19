@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, User, Menu, X, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import logo from "@/assets/logo.png";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,20 +25,19 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHome
-          ? "bg-background/95 backdrop-blur-md shadow-soft border-b-2 border-foreground/10"
-          : "bg-background"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHome
+        ? "bg-background/95 backdrop-blur-md shadow-soft border-b-2 border-foreground/10"
+        : "bg-background"
+        }`}
     >
       {/* Decorative top line */}
       <div className="h-1 bg-gradient-to-r from-accent via-primary to-accent" />
-      
+
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl">🥟</span>
+            <img src={logo} alt="GolgappaFleet Logo" className="w-8 h-8 object-contain" />
             <span className="font-display font-bold text-xl text-foreground">
               GolgappaFleet
             </span>
@@ -47,31 +47,28 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-2">
             <Link
               to="/"
-              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
-                isActiveLink("/")
-                  ? "bg-accent text-accent-foreground"
-                  : "text-foreground hover:bg-muted"
-              }`}
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${isActiveLink("/")
+                ? "bg-accent text-accent-foreground"
+                : "text-foreground hover:bg-muted"
+                }`}
             >
               Home
             </Link>
             <Link
               to="/menu"
-              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
-                isActiveLink("/menu")
-                  ? "bg-accent text-accent-foreground"
-                  : "text-foreground hover:bg-muted"
-              }`}
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${isActiveLink("/menu")
+                ? "bg-accent text-accent-foreground"
+                : "text-foreground hover:bg-muted"
+                }`}
             >
               Menu
             </Link>
             <Link
               to="/auth"
-              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
-                isActiveLink("/auth")
-                  ? "bg-accent text-accent-foreground"
-                  : "text-foreground hover:bg-muted"
-              }`}
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${isActiveLink("/auth")
+                ? "bg-accent text-accent-foreground"
+                : "text-foreground hover:bg-muted"
+                }`}
             >
               Login
             </Link>
@@ -121,30 +118,37 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-t border-border"
+            className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-elevated"
           >
-            <nav className="container mx-auto px-4 py-4 flex flex-col gap-3">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground py-2">
+            <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground py-2 border-b border-border/50">
                 <MapPin className="w-4 h-4" />
                 <span>Mumbai, 400001</span>
               </div>
               <Link
+                to="/"
+                className="py-3 text-lg font-display font-bold text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
                 to="/menu"
-                className="py-2 text-foreground font-medium"
+                className="py-3 text-lg font-display font-bold text-foreground hover:text-primary transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Menu
               </Link>
               <Link
                 to="/orders"
-                className="py-2 text-foreground font-medium"
+                className="py-3 text-lg font-display font-bold text-foreground hover:text-primary transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Orders
               </Link>
               <Link
                 to="/auth"
-                className="py-2 text-foreground font-medium"
+                className="py-3 text-lg font-display font-bold text-primary hover:text-primary/80 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Login / Sign Up
