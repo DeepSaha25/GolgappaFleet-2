@@ -2,6 +2,7 @@ import { Hero } from "@/components/home/Hero";
 import { PickYourBox } from "@/components/home/PickYourBox";
 import { PromoBanner } from "@/components/home/PromoBanner";
 import { HygieneSection } from "@/components/home/HygieneSection";
+import { HowToSection } from "@/components/home/HowToSection";
 import { Header } from "@/components/layout/Header";
 import { ProductModal } from "@/components/menu/ProductModal";
 import { CartDrawer } from "@/components/cart/CartDrawer";
@@ -38,7 +39,8 @@ const Index = () => {
       {/* Hygiene Section */}
       <HygieneSection />
 
-      {/* Footer */}
+      {/* How To Section */}
+      <HowToSection />
       <footer className="py-12 bg-foreground text-card">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
