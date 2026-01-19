@@ -20,52 +20,65 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isActiveLink = (path: string) => location.pathname === path;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || !isHome
-          ? "bg-card/95 backdrop-blur-md shadow-soft"
-          : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-md shadow-soft border-b-2 border-foreground/10"
+          : "bg-background"
       }`}
     >
+      {/* Decorative top line */}
+      <div className="h-1 bg-gradient-to-r from-accent via-primary to-accent" />
+      
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <span className="text-2xl">🥟</span>
             <span className="font-display font-bold text-xl text-foreground">
-              Golgappa
+              GolgappaFleet
             </span>
           </Link>
 
-          {/* Location picker - Desktop */}
-          <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
-            <MapPin className="w-4 h-4" />
-            <span>Mumbai, 400001</span>
-          </div>
-
           {/* Navigation - Desktop */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-2">
+            <Link
+              to="/"
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
+                isActiveLink("/")
+                  ? "bg-accent text-accent-foreground"
+                  : "text-foreground hover:bg-muted"
+              }`}
+            >
+              Home
+            </Link>
             <Link
               to="/menu"
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
+                isActiveLink("/menu")
+                  ? "bg-accent text-accent-foreground"
+                  : "text-foreground hover:bg-muted"
+              }`}
             >
               Menu
             </Link>
             <Link
-              to="/orders"
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              to="/auth"
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
+                isActiveLink("/auth")
+                  ? "bg-accent text-accent-foreground"
+                  : "text-foreground hover:bg-muted"
+              }`}
             >
-              Orders
+              Login
             </Link>
           </nav>
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="hidden md:flex">
-              <Search className="w-5 h-5" />
-            </Button>
-
             <Button
               variant="ghost"
               size="icon"
@@ -77,18 +90,12 @@ export function Header() {
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center"
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center"
                 >
                   {totalItems}
                 </motion.span>
               )}
             </Button>
-
-            <Link to="/auth">
-              <Button variant="ghost" size="icon">
-                <User className="w-5 h-5" />
-              </Button>
-            </Link>
 
             {/* Mobile Menu Toggle */}
             <Button
