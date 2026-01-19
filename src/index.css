@@ -7,8 +7,8 @@
 
 @layer base {
   :root {
-    /* Core Colors - Warm & Inviting */
-    --background: 30 60% 98%; /* #FFF9F3 soft cream */
+    /* Core Colors - Warm & Vibrant */
+    --background: 48 100% 96%; /* #FFF9E6 warm cream */
     --foreground: 30 8% 16%; /* #2E2B26 charcoal */
 
     --card: 0 0% 100%; /* #FFFFFF */
@@ -17,8 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 30 8% 16%;
 
-    /* Brand Yellow - Muted Warm */
-    --primary: 41 89% 67%; /* #F6C85F */
+    /* Brand Yellow - Vibrant */
+    --primary: 45 100% 50%; /* #FFCC00 vibrant yellow */
     --primary-foreground: 30 8% 16%;
 
     --secondary: 30 30% 95%;
@@ -27,8 +27,8 @@
     --muted: 30 20% 94%;
     --muted-foreground: 30 8% 45%;
 
-    --accent: 30 30% 92%;
-    --accent-foreground: 30 8% 16%;
+    --accent: 24 100% 50%; /* #FF6600 vibrant orange */
+    --accent-foreground: 0 0% 100%;
 
     /* Status Colors */
     --success: 145 63% 42%; /* #27AE60 */
@@ -40,7 +40,7 @@
     /* UI Elements */
     --border: 30 20% 90%;
     --input: 30 20% 90%;
-    --ring: 41 89% 67%;
+    --ring: 45 100% 50%;
 
     --radius: 0.75rem;
 
@@ -51,16 +51,17 @@
     --shadow-soft: 0 2px 8px -2px hsl(30 8% 16% / 0.08);
     --shadow-medium: 0 4px 16px -4px hsl(30 8% 16% / 0.12);
     --shadow-elevated: 0 8px 32px -8px hsl(30 8% 16% / 0.16);
+    --shadow-bold: 4px 4px 0px hsl(30 8% 16% / 1);
 
     /* Sidebar (for admin) */
     --sidebar-background: 30 40% 97%;
     --sidebar-foreground: 30 8% 16%;
-    --sidebar-primary: 41 89% 67%;
+    --sidebar-primary: 45 100% 50%;
     --sidebar-primary-foreground: 30 8% 16%;
     --sidebar-accent: 30 30% 92%;
     --sidebar-accent-foreground: 30 8% 16%;
     --sidebar-border: 30 20% 90%;
-    --sidebar-ring: 41 89% 67%;
+    --sidebar-ring: 45 100% 50%;
   }
 
   .dark {
@@ -170,6 +171,30 @@
     box-shadow: var(--shadow-elevated);
   }
 
+  .shadow-bold {
+    box-shadow: var(--shadow-bold);
+  }
+
+  /* Diagonal stripes background */
+  .stripes-orange {
+    background: repeating-linear-gradient(
+      -45deg,
+      hsl(24 100% 50%),
+      hsl(24 100% 50%) 4px,
+      hsl(24 100% 55%) 4px,
+      hsl(24 100% 55%) 8px
+    );
+  }
+
+  /* Bold text outline */
+  .text-outline {
+    text-shadow: 
+      2px 2px 0 hsl(var(--foreground)),
+      -2px -2px 0 hsl(var(--foreground)),
+      2px -2px 0 hsl(var(--foreground)),
+      -2px 2px 0 hsl(var(--foreground));
+  }
+
   /* Animation utilities */
   .animate-fade-in {
     animation: fadeIn 0.3s ease-out;
@@ -185,6 +210,19 @@
 
   .animate-bounce-subtle {
     animation: bounceSubtle 0.5s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
