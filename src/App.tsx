@@ -11,7 +11,13 @@ import OrderConfirmationPage from "./pages/OrderConfirmation";
 import OrdersPage from "./pages/Orders";
 import AuthPage from "./pages/Auth";
 import AdminDashboard from "./pages/admin/Dashboard";
+import AdminOrders from "./pages/admin/Orders";
+import AdminOrderDetails from "./pages/admin/OrderDetails";
+import AdminMenu from "./pages/admin/Menu";
+import AdminSettings from "./pages/admin/Settings";
+import AdminLayout from "./layouts/AdminLayout";
 import NotFound from "./pages/NotFound";
+import { ChatBot } from "@/components/chat/ChatBot";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +27,7 @@ const App = () => (
       <CartProvider>
         <Toaster />
         <Sonner />
+        <ChatBot />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -29,7 +36,13 @@ const App = () => (
             <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
             <Route path="/orders" element={<OrdersPage />} />
             <Route path="/auth" element={<AuthPage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="orders" element={<AdminOrders />} />
+              <Route path="orders/:orderId" element={<AdminOrderDetails />} />
+              <Route path="menu" element={<AdminMenu />} />
+              <Route path="settings" element={<AdminSettings />} />
+            </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

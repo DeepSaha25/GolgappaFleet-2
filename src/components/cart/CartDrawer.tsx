@@ -3,6 +3,7 @@ import { X, Minus, Plus, ShoppingBag, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 export function CartDrawer() {
   const { items, isOpen, toggleCart, totalAmount, updateQuantity, removeItem } = useCart();
@@ -47,7 +48,7 @@ export function CartDrawer() {
             <div className="flex-1 overflow-y-auto p-4">
               {items.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-center">
-                  <div className="text-6xl mb-4">🥟</div>
+                  <img src={logo} alt="Empty Cart" className="h-16 w-auto mb-4 object-contain opacity-80" />
                   <h3 className="font-display font-semibold text-lg mb-2">
                     Your cart is empty
                   </h3>

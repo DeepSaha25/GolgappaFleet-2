@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 type AuthMode = "login" | "register";
 
@@ -40,7 +41,7 @@ export default function AuthPage() {
           <div className="bg-card rounded-2xl shadow-medium p-8">
             {/* Logo */}
             <div className="text-center mb-8">
-              <span className="text-4xl mb-2 block">🥟</span>
+              <img src={logo} alt="Golgappa Fleet" className="h-12 w-auto mx-auto mb-4 object-contain" />
               <h1 className="text-2xl font-display font-bold">
                 {mode === "login" ? "Welcome Back!" : "Create Account"}
               </h1>
@@ -56,8 +57,8 @@ export default function AuthPage() {
               <button
                 onClick={() => setMode("login")}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${mode === "login"
-                    ? "bg-card shadow-soft text-foreground"
-                    : "text-muted-foreground"
+                  ? "bg-card shadow-soft text-foreground"
+                  : "text-muted-foreground"
                   }`}
               >
                 Login
@@ -65,8 +66,8 @@ export default function AuthPage() {
               <button
                 onClick={() => setMode("register")}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${mode === "register"
-                    ? "bg-card shadow-soft text-foreground"
-                    : "text-muted-foreground"
+                  ? "bg-card shadow-soft text-foreground"
+                  : "text-muted-foreground"
                   }`}
               >
                 Sign Up
