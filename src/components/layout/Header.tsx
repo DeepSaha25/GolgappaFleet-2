@@ -27,7 +27,7 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHome
         ? "bg-background/95 backdrop-blur-md shadow-soft border-b-2 border-foreground/10"
-        : "bg-background"
+        : "bg-transparent"
         }`}
     >
       {/* Decorative top line */}
